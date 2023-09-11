@@ -4,7 +4,7 @@ export const test = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         test: builder.query({
             query: () => ({
-                url: "/movie/11",
+                url: "/movie/11/images",
                 method: 'get'
             })
         })
