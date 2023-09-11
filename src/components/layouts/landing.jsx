@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom"
+import { Nav } from "../global/nav"
 
 export const LandingLayout = ({ children }) => {
     return (
-        <>
-            <h1>Header</h1>
-            {children}
-
-            <Link to="movies">movies</Link>
-        </>
+        <main className="font-dm w-[100dvw]">
+            <Nav />
+        </main>
     )
 }
