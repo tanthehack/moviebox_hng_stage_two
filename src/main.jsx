@@ -7,13 +7,14 @@ import { Provider } from 'react-redux'
 import { store } from './api/store.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { TopMovies } from './routes/landing/topMovies.js'
-import { SearchResults } from './routes/landing/searchResults.js'
-import { Movie } from './routes/details/movie.js'
+import { TopMovies } from './routes/landing/topMovies.jsx'
+import { SearchResults } from './routes/landing/searchResults.jsx'
+import { Movie } from './routes/details/movie.jsx'
 import { MoviesLayout } from './components/layouts/movies.jsx'
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <App />,
     children: [
       {
@@ -27,11 +28,13 @@ const router = createBrowserRouter([
       }
     ]
   },
+
   {
     path: "movies",
     element: <MoviesLayout />,
     children: [
       {
+        index: true,
         path: ":movieId",
         element: <Movie />
       }

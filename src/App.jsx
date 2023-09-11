@@ -1,3 +1,5 @@
+import { Outlet } from "react-router-dom";
+import { LandingLayout } from "./components/layouts/landing";
 import { useTestQuery } from "./services/test"
 function App() {
 
@@ -7,7 +9,9 @@ function App() {
 
   return (
     <>
-      <p>yo</p>
+      <LandingLayout>
+        <Outlet />
+      </LandingLayout>
     </>
   )
 }
