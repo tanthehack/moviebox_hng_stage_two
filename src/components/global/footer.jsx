@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Youtube } from "../../assets/icons/genera
 export const Footer = () => {
     return (
         <>
-            <footer className="w-[100dvw] h-[30dvh] lg:h-[50dvh] flex flex-col items-center justify-center gap-9 text-xs font-bold text-gray-900">
+            <footer className="w-full h-[30dvh] lg:h-[50dvh] flex flex-col items-center justify-center gap-9 text-xs font-bold text-gray-900">
                 <div className="flex justify-center gap-12">
                     <Facebook />
                     <Instagram />
