@@ -24,7 +24,7 @@ export const Movie = () => {
     const mainTrailer = movieTrailers?.filter(trailer => trailer.name === "Main Trailer").reduce((obj, item) => ({ ...obj, [`site`]: item.site, [`key`]: item.key }), {})
 
     return (
-        <section className="px-10 py-10 w-full flex flex-col gap-6">
+        <section className="px-10 py-10 w-full flex flex-col gap-6 mt-[70px] lg:m-0">
             <a
                 style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path})`,
