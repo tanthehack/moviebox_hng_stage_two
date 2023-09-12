@@ -27,8 +27,8 @@ export const MovieCard = (props) => {
                 }}
                 className="w-[250px] h-[370px] relative" data-testid="movie-poster"
             >
-                <span className="bg-gray-opacity hover:bg-rose-200 hover:cursor-pointer w-7 h-7 flex items-center justify-center rounded-full absolute top-0 right-0 m-4" onClick={handleLikeMove}>
-                    <Icon.HeartIcon className="text-gray-300 w-5 h-5 hover:text-rose-500" />
+                <span className="bg-gray-opacity hover:bg-rose-200 hover:cursor-pointer w-7 h-7 flex items-center justify-center rounded-full absolute top-0 right-0 m-4 group" onClick={handleLikeMove}>
+                    <Icon.HeartIcon className="text-gray-300 w-5 h-5 group-hover:text-rose-500" />
                 </span>
             </div>
             <p className="text-xs font-bold text-gray-400" data-testid="movie-release-date">{date}</p>
