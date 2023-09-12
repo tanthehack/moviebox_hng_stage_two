@@ -12,6 +12,9 @@ import { SearchResults } from './routes/landing/searchResults.jsx'
 import { Movie } from './routes/details/movie.jsx'
 import { MoviesLayout } from './components/layouts/movies.jsx'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +47,19 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <ToastContainer
+      position="top-center"
+      autoClose={1000}
+      newestOnTop
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="colored"
+      limit={1}
+      className="toast-global"
+    />
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>

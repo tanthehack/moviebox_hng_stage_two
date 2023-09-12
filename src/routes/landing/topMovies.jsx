@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
-import { Imdb, Rect } from "../../assets/icons/generatedIcons"
+import { Imdb, Rect, RottenTomatoe } from "../../assets/icons/generatedIcons"
+import * as Icon from '@heroicons/react/24/solid'
 import { useGetTopMoviesQuery } from "../../services/topMoviesSlice"
+import { MovieCard } from "../../components/global/moviecard"
 
 export const TopMovies = () => {
 
@@ -14,8 +16,6 @@ export const TopMovies = () => {
         setTimeout(() => { () => setHeroActiveIndex(prev => prev++) }, 3000)
     }, [heroActiveIndex])
 
-    console.log(heroActiveIndex)
-
     const { data: topMoviesData, isLoading } = useGetTopMoviesQuery()
 
     const topMovies = topMoviesData?.results?.slice(0, 9).map((item, index) => {
@@ -24,14 +24,11 @@ export const TopMovies = () => {
             title: item.title,
             backdropPath: item.backdrop_path,
             posterPath: item.poster_path,
-            releaseDate: item.releaseDate,
+            releaseDate: item.release_date,
             overview: item.overview,
             rating: item.vote_average
         }
     })
-
-    console.log(topMoviesData?.results)
-    console.log(topMovies)
 
     return (
         <section className="w-full h-fit">
@@ -51,6 +48,10 @@ export const TopMovies = () => {
                             <Imdb />
                             <p>{topMovies?.[heroActiveIndex]?.rating} / 10</p>
                         </span>
+                        <span className="flex items-center gap-2">
+                            <RottenTomatoe />
+                            <p>{(topMovies?.[heroActiveIndex]?.rating / 10 * 100).toFixed(1)} / 100</p>
+                        </span>
                     </div>
                     <p className="text-sm font-medium">{topMovies?.[heroActiveIndex]?.overview}</p>
                     <p>Watch Trailer</p>
@@ -64,6 +65,27 @@ export const TopMovies = () => {
                     <button className={`${heroActiveIndex === 4 ? "text-white text-base hover:cursor-pointer" : "text-gray-400 text-xs"} font-bold flex items-center gap-2`} onClick={() => changeHeroActiveIndex(4)}>{heroActiveIndex === 4 ? <Rect /> : null} 5</button>
                 </div>
             </div>
+
+            <div className="px-16 mt-[100px] space-y-8">
+                <section className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 justify-items-center gap-y-24 w-full">
+                    <div className="lg:col-span-4 md:col-span-2 md:flex-row flex lg:flex-row flex-col lg:items-center lg:justify-between md:items-center md:justify-between w-full">
+                        <h1 className="text-4xl font-bold">Featured Movies</h1>
+                        <p className="text-rose-700 text-lg flex items-center gap-2">See more <Icon.ChevronRightIcon className="w-5 h-5" /> </p>
+                    </div>
+
+                    {topMovies?.map((item) => (
+                        <MovieCard
+                            key={item.id}
+                            posterPath={item?.posterPath}
+                            date={item?.releaseDate}
+                            title={item?.title}
+                            rating={item?.rating}
+                            score={(item?.rating / 10 * 100).toFixed(1)}
+                        />
+                    ))}
+                </section>
+            </div>
         </section>
     )
 }
+

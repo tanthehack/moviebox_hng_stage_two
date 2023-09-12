@@ -12,6 +12,7 @@ export default {
     colors: {
       white: "#FFFFFF",
       gray: {
+        opacity: "rgba(243, 244, 246, 0.50)",
         50: "#F9FAFB",
         100: "#F3F4F6",
         200: "#E5E7EB",
