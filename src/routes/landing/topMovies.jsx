@@ -3,6 +3,7 @@ import { Imdb, Rect, RottenTomatoe } from "../../assets/icons/generatedIcons"
 import * as Icon from '@heroicons/react/24/solid'
 import { useGetTopMoviesQuery } from "../../services/topMoviesSlice"
 import { MovieCard } from "../../components/global/moviecard"
+import { Button } from "../../components/global/button"
 
 export const TopMovies = () => {
 
@@ -55,7 +56,7 @@ export const TopMovies = () => {
                         </span>
                     </div>
                     <p className="text-sm font-medium">{topMovies?.[heroActiveIndex]?.overview}</p>
-                    <p>Watch Trailer</p>
+                    <Button text="Watch Trailer" type="solid" icon={<Icon.PlayCircleIcon />} />
                 </div>
 
                 <div className="flex flex-row lg:flex-col items-end gap-4">
