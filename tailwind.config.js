@@ -38,6 +38,7 @@ export default {
       },
 
       rose: {
+        opacity: "rgba(190, 18, 60, 0.10)",
         50: "#FFF1F2",
         100: "#FFE4E6",
         200: "#FECDD3",
@@ -48,7 +49,9 @@ export default {
         700: "#BE123C",
         800: "#9F1239",
         900: "#881337"
-      }
+      },
+
+      yellow: "#FCD34D"
     },
 
     extend: {},

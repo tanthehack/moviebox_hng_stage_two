@@ -1,8 +1,12 @@
+import { Outlet } from "react-router-dom"
+import { SideBar } from "../global/sideBar"
+
 export const MoviesLayout = () => {
     return (
-        <>
-            <h1>Nav</h1>
-        </>
+        <main className="lg:h-[100dvh] font-dm flex">
+            <SideBar />
+            <Outlet />
+        </main>
     )
 
 }
