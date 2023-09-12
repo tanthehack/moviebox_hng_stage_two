@@ -3,6 +3,7 @@ import * as Icon from '@heroicons/react/24/solid'
 import { SearchBar } from "./search"
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useState } from "react";
+import { useWindowScroll } from "../../hooks/useWindowScroll";
 
 export const Nav = () => {
     let isMobile = useMediaQuery("(max-width: 768px)");
@@ -12,7 +13,10 @@ export const Nav = () => {
         setShowSearch(value)
     }
 
-    const normalNav = <nav className="flex items-center justify-between w-full text-white py-6 px-24 fixed z-[100]">
+    let changeNav = useWindowScroll(100)
+    console.log(changeNav)
+
+    const normalNav = <nav className={`${changeNav ? "bg-gray-900 border-b-[1px] border-rose-600" : ""} flex items-center justify-between w-full text-white py-6 px-24 fixed z-[100] transition ease-in-out duration-300`}>
         <span className="text-2xl flex items-center gap-6 font-bold"><Logo /> MovieBox</span>
         <SearchBar />
         <span className="flex items-center w-fit gap-6" >Sign in <Icon.Bars2Icon className="w-6 h-6 p-[6px] bg-rose-700 rounded-full" /></span>
