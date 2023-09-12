@@ -40,7 +40,7 @@ export const SearchBar = ({ isMobile, showSearch }) => {
         }
     })
 
-    const searchResultsContainer = <div className={`${showSearchResults ? "block" : "hidden"} h-fit w-full bg-gray-900 p-7 absolute top-[55px] lg:top-[40px] left-0 rounded-b-[6px] overflow-scroll space-y-4`}>
+    const searchResultsContainer = <div className={`${showSearchResults ? "block" : "hidden"} h-fit w-full bg-gray-900 p-7 absolute top-[55px] lg:top-[40px] left-0 rounded-b-[6px] overflow-hidden space-y-4`}>
         {results?.map((item) => (
             <Link to={`movies/${item.id}`} className='p-4 border-b-[1px] border-gray-800 flex items-center gap-4 text-sm hover:bg-gray-700 rounded-lg'>
                 <div style={{
