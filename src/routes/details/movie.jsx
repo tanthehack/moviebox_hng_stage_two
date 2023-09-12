@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom"
-import { useGetMovieDetailsQuery } from "../../services/movieDetails"
+import { useGetMovieDetailsQuery } from "../../services/movieDetailsSlice"
 import * as Icon from '@heroicons/react/24/solid'
 import { useDateFormat } from "../../hooks/useDateFormat"
-import { useGetMovieVideosQuery } from "../../services/movieTrailer"
+import { useGetMovieVideosQuery } from "../../services/movieTrailerSlice"
 import { Button } from "../../components/global/button"
 import blogImg from '../../assets/blog.png'
 import { LoadingState } from "../../components/states/loadingState"
@@ -86,7 +86,7 @@ export const Movie = () => {
                 <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-3">
                         <Button icon={<Icon.TicketIcon />} text="See Showtimes" type="solid" />
-                        <Button icon={<Icon.ListBulletIcon />} text="See Showtimes" />
+                        <Button icon={<Icon.ListBulletIcon />} text="See Showtimes" type="outline" />
                     </div>
                     <div
                         style={{

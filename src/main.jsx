@@ -5,7 +5,7 @@ import './index.css'
 
 import { Provider } from 'react-redux'
 import { store } from './api/store.js'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, ScrollRestoration, createBrowserRouter } from 'react-router-dom'
 
 import { TopMovies } from './routes/landing/topMovies.jsx'
 import { SearchResults } from './routes/landing/searchResults.jsx'

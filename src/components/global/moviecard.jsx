@@ -25,16 +25,18 @@ export const MovieCard = (props) => {
         <div className="flex flex-col gap-3 relative" data-testid="movie-card">
 
             {/* Movie Poster */}
-            <Link to={`movies/${id}`}>
+            <Link to={`/movies/${id}`}>
                 <div
                     style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/w342/${posterPath})`,
+                        backgroundColor: '#9CA3AF',
+                        backgroundImage: `${posterPath ? `url(https://image.tmdb.org/t/p/w342/${posterPath})` : null}`,
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
                     }}
-                    className="w-[250px] h-[370px] hover:scale-[1.02] hover:rotate-[1deg] transition ease-in-out duration-300 relative" data-testid="movie-poster"
+                    className="w-[250px] h-[370px] hover:scale-[1.02] hover:rotate-[1deg] flex justify-center items-center transition ease-in-out duration-300 relative" data-testid="movie-poster"
                 >
+                    {!posterPath ? <p className="text-gray-900 text-5xl text-center">No Poster Available</p> : null}
                 </div>
             </Link>
 
