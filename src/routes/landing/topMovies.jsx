@@ -41,7 +41,7 @@ export const TopMovies = () => {
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
                 }}
-                className="w-full lg:h-[100dvh] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center lg:pl-24 lg:pr-6 pt-[100px] lg:pt-0 p-6"
+                className="w-full lg:h-[100dvh] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center lg:pl-24 lg:pr-6 pt-[100px] lg:pt-0 p-6 gap-7"
             >
                 <div className="lg:w-2/5 text-white space-y-4">
                     <h1 className="lg:text-5xl text-3xl font-bold">{topMovies?.[heroActiveIndex]?.title}</h1>
