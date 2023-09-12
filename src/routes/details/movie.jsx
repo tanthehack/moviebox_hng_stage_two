@@ -5,6 +5,8 @@ import { useDateFormat } from "../../hooks/useDateFormat"
 import { useGetMovieVideosQuery } from "../../services/movieTrailer"
 import { Button } from "../../components/global/button"
 import blogImg from '../../assets/blog.png'
+import { LoadingState } from "../../components/states/loadingState"
+import { ColorRing } from "react-loader-spinner"
 
 export const Movie = () => {
     const { movieId } = useParams()
@@ -25,6 +27,8 @@ export const Movie = () => {
 
     return (
         <section className="px-10 py-10 w-full flex flex-col gap-6 mt-[70px] lg:m-0">
+            {/* Loading State */}
+            <LoadingState isLoading={detailsLoading} />
             <a
                 style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path})`,
@@ -39,7 +43,7 @@ export const Movie = () => {
                 {!mainTrailer ? <p className="text-gray-100 text-xl font-medium bg-gray-900 opacity-40 h-full w-full flex items-center justify-center" >No trailer availble</p> :
                     <>
                         <div className="bg-gray-opacity group-hover:bg-rose-200 group-hover:cursor-pointer w-[100px] h-[100px] flex items-center justify-center rounded-full m-4">
-                            <Icon.PlayIcon className="text-white w-12 h-12 group-hover:text-rose-500" />
+                            {videosLoading ? <ColorRing /> : <Icon.PlayIcon className="text-white w-12 h-12 group-hover:text-rose-500" />}
                         </div>
                         <p className="text-white text-xl font-medium group-hover:text-rose-700">Watch Trailer</p>
                     </>

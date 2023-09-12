@@ -4,6 +4,7 @@ import * as Icon from '@heroicons/react/24/solid'
 import { useGetTopMoviesQuery } from "../../services/topMoviesSlice"
 import { MovieCard } from "../../components/global/moviecard"
 import { Button } from "../../components/global/button"
+import { toast } from "react-toastify"
 
 export const TopMovies = () => {
 
@@ -17,7 +18,16 @@ export const TopMovies = () => {
         setTimeout(() => { () => setHeroActiveIndex(prev => prev++) }, 3000)
     }, [heroActiveIndex])
 
-    const { data: topMoviesData, isLoading } = useGetTopMoviesQuery()
+    const { data: topMoviesData, isLoading, isSuccess, isError } = useGetTopMoviesQuery()
+
+    // Error Handling
+    useEffect(() => {
+        if (isSuccess)
+            toast.success("Page Loaded Sucessfully")
+
+        if (isError)
+            toast.error("Server Error")
+    }, [isSuccess, isError])
 
     const topMovies = topMoviesData?.results?.slice(0, 10).map((item) => {
         return {

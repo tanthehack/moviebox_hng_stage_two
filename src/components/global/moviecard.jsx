@@ -28,7 +28,7 @@ export const MovieCard = (props) => {
             <Link to={`movies/${id}`}>
                 <div
                     style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${posterPath})`,
+                        backgroundImage: `url(https://image.tmdb.org/t/p/w342/${posterPath})`,
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
@@ -67,7 +67,7 @@ export const MovieCard = (props) => {
             {/* Genres */}
             <span className="flex gap-1">
                 {genres.map((genreId) => (
-                    <p className="text-xs font-bold text-gray-400">{allGenres[genreId]}, </p>
+                    <p key={genreId} className="text-xs font-bold text-gray-400">{allGenres[genreId]}, </p>
                 ))}
             </span>
         </div>

@@ -14,7 +14,6 @@ export const Nav = () => {
     }
 
     let changeNav = useWindowScroll(100)
-    console.log(changeNav)
 
     const normalNav = <nav className={`${changeNav ? "bg-gray-900 border-b-[1px] border-rose-600" : ""} flex items-center justify-between w-full text-white py-6 px-24 fixed z-[100] transition ease-in-out duration-300`}>
         <span className="text-2xl flex items-center gap-6 font-bold"><Logo /> MovieBox</span>
