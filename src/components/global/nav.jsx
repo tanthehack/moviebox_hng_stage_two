@@ -22,7 +22,7 @@ export const Nav = () => {
         <span className="flex items-center w-fit gap-6" >Sign in <Icon.Bars2Icon className="w-6 h-6 p-[6px] bg-rose-700 rounded-full" /></span>
     </nav>
 
-    const mobileNav = <nav className="flex items-center justify-between w-full text-white p-6 h-[70px] fixed z-[100]">
+    const mobileNav = <nav className={`${changeNav ? "bg-gray-900 border-b-[1px] border-rose-600" : ""} flex items-center justify-between w-full text-white p-6 h-[70px] fixed z-[100]`}>
         <span className={`${!showSearch ? "translate-x-[-120%]" : "translate-x-0"} text-xl flex items-center gap-4 font-bold transition ease-in-out delay-150 duration-300`}><Logo /> MovieBox</span>
         <div className="flex items-center gap-2">
             <SearchBar isMobile={true} showSearch={handleShowSearch} />
