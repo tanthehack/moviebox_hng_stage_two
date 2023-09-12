@@ -18,7 +18,7 @@ export const TopMovies = () => {
 
     const { data: topMoviesData, isLoading } = useGetTopMoviesQuery()
 
-    const topMovies = topMoviesData?.results?.slice(0, 9).map((item, index) => {
+    const topMovies = topMoviesData?.results?.slice(0, 10).map((item, index) => {
         return {
             id: index,
             title: item.title,
