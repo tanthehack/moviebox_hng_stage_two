@@ -14,20 +14,21 @@ import { MoviesLayout } from './components/layouts/movies.jsx'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
+import { ErrorState } from './components/states/error.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
+    errorElement: <ErrorState />,
     children: [
       {
         index: true,
         path: "/",
-        element: <TopMovies />
+        element: <TopMovies />,
       },
       {
-        path: ":query",
-        element: <SearchResults />
+        path: "find/:query",
+        element: <SearchResults />,
       }
     ]
   },
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
   {
     path: "movies",
     element: <MoviesLayout />,
+    errorElement: <ErrorState />,
     children: [
       {
         index: true,
@@ -48,8 +50,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ToastContainer
-      position="top-center"
+      position="bottom-center"
       autoClose={1000}
+      hideProgressBar={true}
       newestOnTop
       closeOnClick
       rtl={false}

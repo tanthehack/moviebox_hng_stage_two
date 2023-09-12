@@ -23,7 +23,7 @@ export const Movie = () => {
         }
     })
 
-    const mainTrailer = movieTrailers?.filter(trailer => trailer.name === "Main Trailer").reduce((obj, item) => ({ ...obj, [`site`]: item.site, [`key`]: item.key }), {})
+    const mainTrailer = movieTrailers?.filter(trailer => trailer.name === "Main Trailer" || trailer.name === "Official Trailer" || trailer.name === "Trailer").reduce((obj, item) => ({ ...obj, [`site`]: item.site, [`key`]: item.key }), {})
 
     return (
         <section className="px-10 py-10 w-full flex flex-col gap-6 mt-[70px] lg:m-0">
