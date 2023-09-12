@@ -67,8 +67,8 @@ export const TopMovies = () => {
             </div>
 
             <div className="px-16 mt-[100px] space-y-8">
-                <section className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 justify-items-center gap-y-24 w-full">
-                    <div className="lg:col-span-4 md:col-span-2 md:flex-row flex lg:flex-row flex-col lg:items-center lg:justify-between md:items-center md:justify-between w-full">
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 justify-items-center gap-y-24 w-full">
+                    <div className="2xl:col-span-4 xl:col-span-4 lg:col-span-3 md:col-span-2 md:flex-row flex lg:flex-row flex-col lg:items-center lg:justify-between md:items-center md:justify-between w-full">
                         <h1 className="text-4xl font-bold">Featured Movies</h1>
                         <p className="text-rose-700 text-lg flex items-center gap-2">See more <Icon.ChevronRightIcon className="w-5 h-5" /> </p>
                     </div>
