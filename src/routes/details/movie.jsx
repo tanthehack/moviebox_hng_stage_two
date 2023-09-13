@@ -23,6 +23,12 @@ export const Movie = () => {
         }
     })
 
+    const isObject = (obj) => {
+        if (obj === null || obj === undefined) return false
+        if (Object.keys(obj).length === 0 && obj.constructor === Object) return false
+        if (Object.keys(obj).length > 0) return true
+    }
+
     const mainTrailer = movieTrailers?.filter(trailer => trailer.name === "Main Trailer" || trailer.name === "Official Trailer" || trailer.name === "Trailer").reduce((obj, item) => ({ ...obj, [`site`]: item.site, [`key`]: item.key }), {})
 
     return (
@@ -31,7 +37,7 @@ export const Movie = () => {
             <LoadingState isLoading={detailsLoading} />
             <a
                 style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path})`,
+                    backgroundImage: `${movieDetails?.backdrop_path == null ? "" : `url(https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path})`}`,
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
@@ -40,7 +46,7 @@ export const Movie = () => {
                 target="_blank"
                 className="min-h-[396px] h-[450px] rounded-3xl flex flex-col items-center hover:cursor-pointer justify-center group overflow-hidden"
             >
-                {!mainTrailer ? <p className="text-gray-100 text-xl font-medium bg-gray-900 opacity-40 h-full w-full flex items-center justify-center" >No trailer availble</p> :
+                {!isObject(mainTrailer) ? <p className="text-gray-100 text-xl font-medium bg-gray-900 opacity-40 h-full w-full flex items-center justify-center" >No trailer availble</p> :
                     <>
                         <div className="bg-gray-opacity group-hover:bg-rose-200 group-hover:cursor-pointer w-[100px] h-[100px] flex items-center justify-center rounded-full m-4">
                             {videosLoading ? <ColorRing /> : <Icon.PlayIcon className="text-white w-12 h-12 group-hover:text-rose-500" />}
