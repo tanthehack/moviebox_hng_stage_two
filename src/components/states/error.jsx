@@ -15,7 +15,7 @@ export const ErrorState = () => {
                     widthFit
                     onClick={() => navigate(-1, { replace: true })}
                 />
-                <h1 className="lg:text-4xl text-xl font-bold">Search Results</h1>
+                <h1 className="lg:text-2xl text-xl font-bold">Go Back</h1>
             </div>
             <div className="flex flex-col items-center justify-center text-xl">
                 <img src={errorImg} className='w-[200px] lg:w-[300px]' />
