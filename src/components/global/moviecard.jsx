@@ -50,7 +50,7 @@ export const MovieCard = (props) => {
 
 
             {/* Title */}
-            <Link to={`movies/${id}`}>
+            <Link to={`/movies/${id}`}>
                 <h1 className="text-lg font-bold w-[250px] hover:underline hover:text-rose-700" data-testid="movie-title">{title}</h1>
             </Link>
 
