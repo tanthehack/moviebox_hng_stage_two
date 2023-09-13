@@ -7,6 +7,7 @@ import { Button } from "../../components/global/button"
 import blogImg from '../../assets/blog.png'
 import { LoadingState } from "../../components/states/loadingState"
 import { ColorRing } from "react-loader-spinner"
+import ScrollToTop from "../../helpers/scrollToTop"
 
 export const Movie = () => {
     const { movieId } = useParams()
@@ -33,6 +34,8 @@ export const Movie = () => {
 
     return (
         <section className="px-10 py-10 w-full flex flex-col gap-6 mt-[70px] lg:m-0">
+            {/* Scroll to top of route */}
+            <ScrollToTop />
             {/* Loading State */}
             <LoadingState isLoading={detailsLoading} />
             <a
