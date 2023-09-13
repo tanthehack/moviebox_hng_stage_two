@@ -2,13 +2,14 @@ import * as Icon from '@heroicons/react/24/solid'
 import { useState } from 'react'
 import { useDebounceValue } from '../../hooks/useDebounceValue'
 import { useSearchMoviesQuery } from '../../services/searchSlice'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ThreeDots } from 'react-loader-spinner'
 
 export const SearchBar = ({ isMobile, showSearch }) => {
     const [showSearchInput, setShowSearchInput] = useState(false)
     const [showSearchResults, setShowSearchResults] = useState(false)
     const [query, setQuery] = useState("")
+    const navigate = useNavigate()
 
     const handleShowSearch = () => {
         setShowSearchInput(prev => !prev)
@@ -20,6 +21,14 @@ export const SearchBar = ({ isMobile, showSearch }) => {
         e.preventDefault()
         e.target.value ? setShowSearchResults(true) : setShowSearchResults(false)
         setQuery(e.target.value)
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            setShowSearchResults(false)
+            navigate(`/find/${e.target.value}`)
+            setQuery('')
+        }
     }
 
     const handleShowSearchContainer = () => {
@@ -81,6 +90,7 @@ export const SearchBar = ({ isMobile, showSearch }) => {
             placeholder="What do you want to watch?"
             className="placeholder-white text-base border-none w-full focus:outline-none"
             onChange={handleSearch}
+            onKeyDown={handleKeyDown}
             value={query}
         />
         <Icon.MagnifyingGlassIcon className='w-4 h-6' />
