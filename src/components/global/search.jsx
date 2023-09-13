@@ -31,6 +31,10 @@ export const SearchBar = ({ isMobile, showSearch }) => {
         }
     }
 
+    const handleSearchButton = () => {
+        navigate(`/find/${query}`)
+    }
+
     const handleShowSearchContainer = () => {
         setShowSearchResults(prev => !prev)
     }
@@ -83,17 +87,21 @@ export const SearchBar = ({ isMobile, showSearch }) => {
         {searchResultsContainer}
     </div>
 
-    const normalSearch = <div className="w-2/5 bg-transparent border-[1px] border-gray-300 text-gray-300 py-[6px] px-[10px] rounded-[6px] h-[40px] flex items-center justify-between focus-within:border-white focus-within:text-white hover:border-white relative">
+    const normalSearch = <div className="w-2/5 bg-transparent border-[1px] border-gray-300 text-gray-300 rounded-[6px] h-[40px] flex items-center justify-between focus-within:border-white focus-within:text-white hover:border-white relative">
         <input
             style={{ backgroundColor: "transparent" }}
             type="text"
             placeholder="What do you want to watch?"
-            className="placeholder-white text-base border-none w-full focus:outline-none"
+            className="placeholder-gray-200 text-base border-none p-[10px] w-full focus:outline-none "
             onChange={handleSearch}
             onKeyDown={handleKeyDown}
             value={query}
         />
-        <Icon.MagnifyingGlassIcon className='w-4 h-6' />
+        <span className='h-full py-[8px] px-[10px] hover:bg-rose-700 group hover:cursor-pointer transition ease-in-out duration-150 rounded-r-[5px]'
+            onClick={handleSearchButton}
+        >
+            <Icon.MagnifyingGlassIcon className='w-4 h-6 group-hover:text-white' />
+        </span>
         {searchResultsContainer}
     </div>
 
