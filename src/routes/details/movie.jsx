@@ -8,12 +8,21 @@ import blogImg from '../../assets/blog.png'
 import { LoadingState } from "../../components/states/loadingState"
 import { ColorRing } from "react-loader-spinner"
 import ScrollToTop from "../../helpers/scrollToTop"
+import { toast } from "react-toastify"
+import { useEffect } from "react"
 
 export const Movie = () => {
     const { movieId } = useParams()
 
-    const { data: movieDetails, isLoading: detailsLoading } = useGetMovieDetailsQuery(`${movieId ?? ""}`)
-    const { data: movieVideosData, isLoading: videosLoading } = useGetMovieVideosQuery(`${movieId ?? ""}`)
+    const { data: movieDetails, isLoading: detailsLoading, isError: detailError } = useGetMovieDetailsQuery(`${movieId ?? ""}`)
+    const { data: movieVideosData, isLoading: videosLoading, isError: videosError } = useGetMovieVideosQuery(`${movieId ?? ""}`)
+
+    // Error Handling
+    useEffect(() => {
+        if (detailError || videosError)
+            toast.error("Server Error")
+    }, [detailError, videosError])
+
 
     const movieTrailers = movieVideosData?.results?.filter(video => video.type === "Trailer").map(item => {
         return {

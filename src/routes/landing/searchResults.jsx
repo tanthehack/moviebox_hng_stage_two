@@ -1,18 +1,24 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useSearchMoviesQuery } from "../../services/searchSlice"
 import Paginate from "../../components/global/paginate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MovieCard } from "../../components/global/moviecard";
 import * as Icon from '@heroicons/react/24/solid'
 import { Button } from "../../components/global/button";
 import { ErrorState } from "../../components/states/errorState";
+import { toast } from "react-toastify";
 
 export const SearchResults = () => {
     const { query } = useParams()
     const [currentPage, setCurrentPage] = useState(1);
 
-    const { data: searchResults, isLoading } = useSearchMoviesQuery({ query: query, page: currentPage })
-    console.log(searchResults)
+    const { data: searchResults, isLoading, isError } = useSearchMoviesQuery({ query: query, page: currentPage })
+
+    // Error Handling
+    useEffect(() => {
+        if (isError)
+            toast.error("Server Error")
+    }, [isError])
 
     const navigate = useNavigate()
 
@@ -29,6 +35,8 @@ export const SearchResults = () => {
         }
     })
 
+    console.log(searchResults)
+
     const handlePaginate = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
@@ -40,7 +48,7 @@ export const SearchResults = () => {
                     icon={<Icon.ChevronLeftIcon />}
                     iconOnly
                     widthFit
-                    onClick={() => navigate(-1)}
+                    onClick={() => navigate(-1, { replace: true })}
                 />
                 <h1 className="lg:text-4xl text-xl font-bold">Search Results</h1>
             </div>

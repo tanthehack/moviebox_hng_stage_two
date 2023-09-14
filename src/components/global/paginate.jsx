@@ -1,11 +1,12 @@
 import * as Icon from '@heroicons/react/24/solid'
 import { Button } from './button';
 import { useState } from 'react';
+
 const Paginate = ({ totalPosts, paginate, currentPage, totalPages }) => {
     const pageNumbers = [];
     const [activePage, setActivePage] = useState(1)
 
-    for (let i = 1; i <= Math.ceil(totalPosts / totalPages); i++) {
+    for (let i = 1; i <= Math.ceil(totalPosts / 20); i++) {
         pageNumbers.push(i);
     }
 
