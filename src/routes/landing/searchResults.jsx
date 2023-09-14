@@ -40,6 +40,13 @@ export const SearchResults = () => {
 
     const handlePaginate = (pageNumber) => {
         setCurrentPage(pageNumber);
+
+        // Scroll to top of page when page changes
+        document.documentElement.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "instant",
+        });
     };
 
     return (
