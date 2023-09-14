@@ -50,7 +50,7 @@ export const Movie = () => {
         )
 
     return (
-        <section className="px-10 py-10 w-full flex flex-col gap-6 mt-[70px] lg:m-0">
+        <section className="px-10 py-10 w-full flex flex-col gap-6 mt-[70px] lg:m-0 overflow-y-auto">
             {/* Scroll to top of route */}
             <ScrollToTop />
 
@@ -80,9 +80,9 @@ export const Movie = () => {
             </a>
 
             {/* Movie details */}
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 w-full">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:gap-7 gap-3">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 text-lg lg:text-2xl font-medium text-gray-700">
+            <div className="flex lg:flex-wrap flex-col lg:flex-row lg:items-center lg:justify-between gap-4 w-full">
+                <div className="flex lg:flex-wrap flex-col lg:flex-row lg:items-center lg:gap-7 gap-3">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 text-lg lg:text-xl font-medium text-gray-700">
                         <h1 data-testid="movie-title">{movieDetails?.title}</h1>
                         <span className="hidden lg:block">•</span>
                         <h1 data-testid="movie-release-date">{useDateFormat(movieDetails?.release_date)}</h1>
@@ -90,7 +90,7 @@ export const Movie = () => {
                         <h1 data-testid="movie-runtime">{movieDetails?.runtime}mins</h1>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-2 text-xs lg:text-base">
+                    <div className="flex flex-wrap items-center gap-2 text-xs lg:text-sm">
                         {movieDetails?.genres?.map((item) => (
                             <span key={item.id} className="text-red-700 border-[1px] border-rose-200 rounded-full py-1 px-4">{item.name}</span>
                         ))}
@@ -100,7 +100,7 @@ export const Movie = () => {
                 <span className="flex items-center gap-2">
                     <Icon.StarIcon className="w-[30px] h-[30px] text-yellow" />
                     <p className="text-gray-300 lg:text-2xl">{movieDetails?.vote_average.toFixed(1)}</p>
-                    <p className="text-gray-500 lg:text-xl">| {movieDetails?.vote_count}</p>
+                    <p className="text-gray-500 lg:text-lg">| {movieDetails?.vote_count}</p>
                 </span>
             </div>
 
@@ -109,13 +109,13 @@ export const Movie = () => {
                 <div className="flex flex-col justify-between gap-6">
                     <p className="text-base lg:text-xl text-gray-600" data-testid="movie-overview">{movieDetails?.overview}</p>
                     <div className="text-base lg:text-xl font-medium border-[1px] border-gray-400 flex items-center rounded-[10px] overflow-hidden">
-                        <span className="bg-rose-700 py-[12px] px-4 rounded-[10px] text-white mr-6">Top rated movie</span>
+                        <span className="bg-rose-700 py-[12px] px-4 rounded-[10px] text-white mr-6 flex-none">Top rated movie</span>
                         <p className="flex items-center justify-between w-4/5 ">Popularity: {movieDetails?.popularity} <Icon.ChevronDownIcon className="w-[30px] h-[30px] text-gray-700" /></p>
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-6">
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-wrap gap-3">
                         <Button icon={<Icon.TicketIcon />} text="See Showtimes" type="solid" />
                         <Button icon={<Icon.ListBulletIcon />} text="See Showtimes" type="outline" />
                     </div>

@@ -19,7 +19,7 @@ export const SideBar = () => {
 
     // Sidebar content for normal (non-mobile) view
     const normalNav = (
-        <nav className="w-[226px] h-full border-[1px] border-gray-300 rounded-r-[45px] pt-9 flex flex-col justify-between">
+        <nav className="w-[226px] h-fit border-[1px] border-gray-300 rounded-r-[45px] pt-9 flex flex-col justify-between">
             <Link to="/" className="text-2xl text-gray-700 flex items-center gap-3 font-bold pl-4"><Logo /> MovieBox</Link>
 
             <div>
@@ -30,7 +30,7 @@ export const SideBar = () => {
             </div>
 
             <div className="px-7">
-                <div className="rounded-[20px] bg-rose-opacity px-4 pt-[42px] pb-4 border-[1px] border-rose-700 flex flex-col gap-2">
+                <div className="rounded-[20px] bg-rose-opacity px-4 pt-[24px] pb-4 border-[1px] border-rose-700 flex flex-col gap-2">
                     <h1 className="text-lg font-semibold text-gray-700">Play movie quizzes and earn free tickets</h1>
                     <p className="text-xs font-medium text-gray-700">50k people are playing now</p>
                     <span className="bg-rose-200 text-center text-xs font-medium py-[6px] px-[17px] rounded-full text-rose-700">Start playing</span>
