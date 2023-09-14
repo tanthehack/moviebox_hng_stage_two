@@ -100,7 +100,7 @@ export const SearchBar = ({ isMobile, showSearch }) => {
         <span className='h-full py-[8px] px-[10px] hover:bg-rose-700 group hover:cursor-pointer transition ease-in-out duration-150 rounded-r-[5px]'
             onClick={handleSearchButton}
         >
-            <Icon.MagnifyingGlassIcon className='w-4 h-6 group-hover:text-white' />
+            <Icon.MagnifyingGlassIcon className={`${showSearchInput ? "translate-x-[-120dvw]" : ""} w-4 h-6 transition ease-in-out delay-150 duration-300`} onClick={handleShowSearch} />
         </span>
         {searchResultsContainer}
     </div>
