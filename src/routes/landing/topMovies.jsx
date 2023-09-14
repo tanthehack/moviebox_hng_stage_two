@@ -14,6 +14,8 @@ export const TopMovies = () => {
         setHeroActiveIndex(index)
     }
 
+
+    // Hero Slider Not Working yet
     useEffect(() => {
         setTimeout(() => { () => setHeroActiveIndex(prev => prev++) }, 3000)
     }, [heroActiveIndex])

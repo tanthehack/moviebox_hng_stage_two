@@ -12,18 +12,21 @@ import { toast } from "react-toastify"
 import { useEffect } from "react"
 
 export const Movie = () => {
-    const { movieId } = useParams()
+    const { movieId } = useParams() // Get the movieId from the URL params
 
+    // Fetch movie details using a query from the get movie details service
     const { data: movieDetails, isLoading: detailsLoading, isError: detailError } = useGetMovieDetailsQuery(`${movieId ?? ""}`)
+
+    // Fetch movie videos using a query from the get movie videos service
     const { data: movieVideosData, isLoading: videosLoading, isError: videosError } = useGetMovieVideosQuery(`${movieId ?? ""}`)
 
-    // Error Handling
+    // Error Handling: Display an error toast if there's an error in fetching data
     useEffect(() => {
         if (detailError || videosError)
             toast.error("Server Error")
     }, [detailError, videosError])
 
-
+    // Filter and map movie trailers
     const movieTrailers = movieVideosData?.results?.filter(video => video.type === "Trailer").map(item => {
         return {
             id: item.id,
@@ -33,14 +36,14 @@ export const Movie = () => {
         }
     })
 
-    console.log(movieTrailers)
-
+    // Check if an object is empty
     const isObject = (obj) => {
         if (obj === null || obj === undefined) return false
         if (Object.keys(obj).length === 0 && obj.constructor === Object) return false
         if (Object.keys(obj).length > 0) return true
     }
 
+    // Filter and get the main trailer
     const mainTrailer = movieTrailers?.filter(trailer =>
         trailer.name.toLowerCase().includes("main trailer" && "official trailer" && "trailer")).reduce((obj, item) =>
             ({ ...obj, [`site`]: item.site, [`key`]: item.key }), {}
@@ -50,8 +53,11 @@ export const Movie = () => {
         <section className="px-10 py-10 w-full flex flex-col gap-6 mt-[70px] lg:m-0">
             {/* Scroll to top of route */}
             <ScrollToTop />
-            {/* Loading State */}
+
+            {/* Loading State: Display loading state while fetching data */}
             <LoadingState isLoading={detailsLoading} />
+
+            {/* Background image for movie trailer */}
             <a
                 style={{
                     backgroundImage: `${movieDetails?.backdrop_path == null ? "" : `url(https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path})`}`,
@@ -63,7 +69,7 @@ export const Movie = () => {
                 target="_blank"
                 className="min-h-[396px] h-[450px] rounded-3xl flex flex-col items-center hover:cursor-pointer justify-center group overflow-hidden"
             >
-                {!isObject(mainTrailer) ? <p className="text-gray-100 text-xl font-medium bg-gray-900 opacity-40 h-full w-full flex items-center justify-center" >No trailer availble</p> :
+                {!isObject(mainTrailer) ? <p className="text-gray-100 text-xl font-medium bg-gray-900 opacity-40 h-full w-full flex items-center justify-center" >No trailer available</p> :
                     <>
                         <div className="bg-gray-opacity group-hover:bg-rose-200 group-hover:cursor-pointer w-[100px] h-[100px] flex items-center justify-center rounded-full m-4">
                             {videosLoading ? <ColorRing /> : <Icon.PlayIcon className="text-white w-12 h-12 group-hover:text-rose-500" />}
@@ -71,8 +77,9 @@ export const Movie = () => {
                         <p className="text-white text-xl font-medium group-hover:text-rose-700">Watch Trailer</p>
                     </>
                 }
-
             </a>
+
+            {/* Movie details */}
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 w-full">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:gap-7 gap-3">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 text-lg lg:text-2xl font-medium text-gray-700">
@@ -97,6 +104,7 @@ export const Movie = () => {
                 </span>
             </div>
 
+            {/* Movie description and buttons */}
             <div className="flex flex-col lg:flex-row gap-6">
                 <div className="flex flex-col justify-between gap-6">
                     <p className="text-base lg:text-xl text-gray-600" data-testid="movie-overview">{movieDetails?.overview}</p>
@@ -124,7 +132,6 @@ export const Movie = () => {
                     </div>
                 </div>
             </div>
-
         </section>
     )
 }

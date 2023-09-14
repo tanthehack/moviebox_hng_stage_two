@@ -6,7 +6,7 @@ import { genres as allGenres } from "../../data/genres"
 import { useDateFormat } from "../../hooks/useDateFormat"
 
 export const MovieCard = (props) => {
-
+    // Destructure props to access movie information
     const {
         id,
         title,
@@ -17,6 +17,7 @@ export const MovieCard = (props) => {
         genres
     } = props
 
+    // Function to handle liking a movie and show a success toast
     const handleLikeMove = () => {
         toast.success("Saved!");
     }
@@ -47,7 +48,6 @@ export const MovieCard = (props) => {
 
             {/* Release Date */}
             <p className="text-xs font-bold text-gray-400" data-testid="movie-release-date">{useDateFormat(date)}</p>
-
 
             {/* Title */}
             <Link to={`/movies/${id}`}>

@@ -5,9 +5,9 @@ export function useWindowScroll(pos) {
 
     const controlNavbar = () => {
         if (typeof window !== 'undefined') {
-            if (window.scrollY < pos) { // if scroll down hide the navbar
+            if (window.scrollY < pos) {
                 setMatches(false);
-            } else { // if scroll up show the navbar
+            } else {
                 setMatches(true);
             }
         }

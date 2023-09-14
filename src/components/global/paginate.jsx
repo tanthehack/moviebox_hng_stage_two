@@ -6,17 +6,18 @@ const Paginate = ({ totalCount, paginate, currentPage, totalPages, pageSize }) =
     const pageNumbers = [];
     const [activePage, setActivePage] = useState(1)
 
-    // Create page numbers
-    for (let i = 1; i <= Math.ceil(totalCount / 20); i++) {
+    // Create an array of page numbers based on total count and page size
+    for (let i = 1; i <= Math.ceil(totalCount / pageSize); i++) {
         pageNumbers.push(i);
     }
 
+    // Function to go to the next page
     const goToNextPage = () => {
         setActivePage((val) => {
             // If the current page is the last page, do nothing
             if (val >= totalPages) return val;
 
-            //Pass current page to paginate function in parent component
+            // Pass the current page to the paginate function in the parent component
             paginate(val + 1)
 
             // Increment the active page by 1
@@ -24,13 +25,13 @@ const Paginate = ({ totalCount, paginate, currentPage, totalPages, pageSize }) =
         });
     }
 
-
+    // Function to go to the previous page
     const goToPreviousPage = () => {
         setActivePage((val) => {
-            // If the current page is the last page, do nothing
+            // If the current page is the first page, do nothing
             if (val <= 1) return val;
 
-            //Pass current page to paginate function in parent component
+            // Pass the current page to the paginate function in the parent component
             paginate(val - 1)
 
             // Decrement the active page by 1
@@ -38,20 +39,25 @@ const Paginate = ({ totalCount, paginate, currentPage, totalPages, pageSize }) =
         });
     }
 
+    // Function to select a specific page
     const selectPage = (number) => {
-        //Pass current page to paginate function in parent component & and set active page
+        // Pass the selected page number to the paginate function in the parent component
         paginate(number)
+
+        // Set the active page to the selected page
         setActivePage(number)
     }
 
     return (
         <div className="w-full flex justify-center">
+            {/* Previous button */}
             <Button
                 icon={<Icon.ArrowLeftIcon />}
                 iconOnly
                 widthFit
                 onClick={goToPreviousPage}
             />
+            {/* Page numbers */}
             <ul className="flex items-center gap-6">
                 {pageNumbers.map((number) => (
                     <li
@@ -63,6 +69,7 @@ const Paginate = ({ totalCount, paginate, currentPage, totalPages, pageSize }) =
                     </li>
                 ))}
             </ul>
+            {/* Next button */}
             <Button
                 icon={<Icon.ArrowRightIcon />}
                 iconOnly
