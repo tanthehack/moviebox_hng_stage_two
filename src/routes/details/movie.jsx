@@ -117,7 +117,7 @@ export const Movie = () => {
                 <div className="flex flex-col gap-6">
                     <div className="flex flex-wrap gap-3">
                         <Button icon={<Icon.TicketIcon />} text="See Showtimes" type="solid" />
-                        <Button icon={<Icon.ListBulletIcon />} text="See Showtimes" type="outline" />
+                        <Button icon={<Icon.ListBulletIcon />} text="More watch options" type="outline" />
                     </div>
                     <div
                         style={{
