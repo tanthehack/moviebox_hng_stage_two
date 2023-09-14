@@ -14,12 +14,12 @@ import { MoviesLayout } from './components/layouts/movies.jsx'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
-import { ErrorState } from './components/states/routeError.jsx'
+import { ErrorPage } from './components/states/routeError.jsx'
 
 const router = createBrowserRouter([
   {
     element: <App />,
-    errorElement: <ErrorState />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
   {
     path: "movies",
     element: <MoviesLayout />,
-    errorElement: <ErrorState />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

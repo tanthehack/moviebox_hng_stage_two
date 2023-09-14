@@ -3,7 +3,7 @@ import { useNavigate, useRouteError } from "react-router-dom";
 import * as Icon from '@heroicons/react/24/solid'
 import { Button } from '../global/button';
 
-export const ErrorState = () => {
+export const ErrorPage = () => {
     const error = useRouteError();
     const navigate = useNavigate()
     return (
