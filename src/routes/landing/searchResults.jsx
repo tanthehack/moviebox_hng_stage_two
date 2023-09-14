@@ -70,7 +70,7 @@ export const SearchResults = () => {
                         ))}
 
                     </section>
-                    <Paginate totalPosts={searchResults?.total_results} totalPages={searchResults?.total_pages} currentPage={currentPage} paginate={handlePaginate} />
+                    <Paginate totalCount={searchResults?.total_results} totalPages={searchResults?.total_pages} currentPage={currentPage} paginate={handlePaginate} pageSize={20} />
                 </>
             }
         </div>

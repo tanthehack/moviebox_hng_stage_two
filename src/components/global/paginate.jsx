@@ -2,32 +2,44 @@ import * as Icon from '@heroicons/react/24/solid'
 import { Button } from './button';
 import { useState } from 'react';
 
-const Paginate = ({ totalPosts, paginate, currentPage, totalPages }) => {
+const Paginate = ({ totalCount, paginate, currentPage, totalPages, pageSize }) => {
     const pageNumbers = [];
     const [activePage, setActivePage] = useState(1)
 
-    for (let i = 1; i <= Math.ceil(totalPosts / 20); i++) {
+    // Create page numbers
+    for (let i = 1; i <= Math.ceil(totalCount / 20); i++) {
         pageNumbers.push(i);
     }
 
     const goToNextPage = () => {
         setActivePage((val) => {
+            // If the current page is the last page, do nothing
             if (val >= totalPages) return val;
+
+            //Pass current page to paginate function in parent component
             paginate(val + 1)
 
+            // Increment the active page by 1
             return val + 1;
         });
     }
 
+
     const goToPreviousPage = () => {
         setActivePage((val) => {
+            // If the current page is the last page, do nothing
             if (val <= 1) return val;
+
+            //Pass current page to paginate function in parent component
             paginate(val - 1)
+
+            // Decrement the active page by 1
             return val - 1;
         });
     }
 
     const selectPage = (number) => {
+        //Pass current page to paginate function in parent component & and set active page
         paginate(number)
         setActivePage(number)
     }
