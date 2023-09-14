@@ -53,7 +53,7 @@ export const SearchBar = ({ isMobile, showSearch }) => {
         }
     })
 
-    const searchResultsContainer = <div className={`${showSearchResults ? "block" : "hidden"} h-fit w-full bg-gray-900 p-7 absolute top-[55px] lg:top-[40px] left-0 rounded-b-[6px] overflow-hidden space-y-4`}>
+    const searchResultsContainer = <div className={`${showSearchResults ? "block" : "hidden"} h-fit w-full bg-gray-900 p-7 absolute top-[55px] lg:top-[40px] left-0 rounded-b-[6px] overflow-hidden space-y-4 border-b-[1px] border-gray-700`}>
         {results?.map((item) => (
             <Link to={`movies/${item.id}`} className='p-4 border-b-[1px] border-gray-800 flex items-center gap-4 text-sm hover:bg-gray-700 rounded-lg'>
                 <div style={{
@@ -68,7 +68,7 @@ export const SearchBar = ({ isMobile, showSearch }) => {
             </Link>
         ))}
 
-        {isLoading ? null : searchResults?.total_results === 0 ? <p>No Results :( </p> : <Link onClick={handleShowSearchContainer} to={`find/${debouncedValue}`} className='hover:after:content-["→"] hover:text-rose-700 block'>See All Results </Link>}
+        {isLoading ? null : searchResults?.total_results === 0 ? <span className='flex items-center text-grey-600 gap-3'><Icon.FaceFrownIcon className='w-4 h-4' /> <p>No Results</p></span> : <Link onClick={handleShowSearchContainer} to={`find/${debouncedValue}`} className='hover:after:content-["→"] hover:text-rose-700 block'>See All Results </Link>}
     </div>
 
     const mobileSearch = <div>
