@@ -14,7 +14,7 @@ import { MoviesLayout } from './components/layouts/movies.jsx'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
-import { ErrorState } from './components/states/error.jsx'
+import { ErrorState } from './components/states/routeError.jsx'
 
 const router = createBrowserRouter([
   {
