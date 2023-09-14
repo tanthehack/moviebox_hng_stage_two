@@ -1,9 +1,10 @@
 import * as Icon from '@heroicons/react/24/solid'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDebounceValue } from '../../hooks/useDebounceValue'
 import { useSearchMoviesQuery } from '../../services/searchSlice'
 import { Link, useNavigate } from 'react-router-dom'
 import { ThreeDots } from 'react-loader-spinner'
+import { toast } from 'react-toastify'
 
 export const SearchBar = ({ isMobile, showSearch }) => {
     const [showSearchInput, setShowSearchInput] = useState(false)
@@ -41,7 +42,13 @@ export const SearchBar = ({ isMobile, showSearch }) => {
 
     const debouncedValue = useDebounceValue(query)
 
-    const { data: searchResults, isLoading } = useSearchMoviesQuery({ query: debouncedValue, page: 1 })
+    const { data: searchResults, isLoading, isError } = useSearchMoviesQuery({ query: debouncedValue, page: 1 })
+
+    useEffect(() => {
+        if (isError)
+            toast.error("Server Error")
+    }, [isError])
+
 
     const results = searchResults?.results?.slice(0, 5).map((item) => {
         return {
