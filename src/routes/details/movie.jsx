@@ -33,13 +33,18 @@ export const Movie = () => {
         }
     })
 
+    console.log(movieTrailers)
+
     const isObject = (obj) => {
         if (obj === null || obj === undefined) return false
         if (Object.keys(obj).length === 0 && obj.constructor === Object) return false
         if (Object.keys(obj).length > 0) return true
     }
 
-    const mainTrailer = movieTrailers?.filter(trailer => trailer.name === "Main Trailer" || trailer.name === "Official Trailer" || trailer.name === "Trailer").reduce((obj, item) => ({ ...obj, [`site`]: item.site, [`key`]: item.key }), {})
+    const mainTrailer = movieTrailers?.filter(trailer =>
+        trailer.name.toLowerCase().includes("main trailer" && "official trailer" && "trailer")).reduce((obj, item) =>
+            ({ ...obj, [`site`]: item.site, [`key`]: item.key }), {}
+        )
 
     return (
         <section className="px-10 py-10 w-full flex flex-col gap-6 mt-[70px] lg:m-0">
