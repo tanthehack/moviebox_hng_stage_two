@@ -4,7 +4,7 @@ export const topMoviesSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getTopMovies: builder.query({
             query: () => ({
-                url: "/movie/popular?language=en-US&page=1",
+                url: "/movie/top_rated?language=en-US&page=1",
                 method: 'get'
             })
         })
