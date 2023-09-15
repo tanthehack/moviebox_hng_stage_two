@@ -85,9 +85,9 @@ export const Movie = () => {
                     <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 text-lg lg:text-xl font-medium text-gray-700">
                         <h1 data-testid="movie-title">{movieDetails?.title}</h1>
                         <span className="hidden lg:block">•</span>
-                        <h1 data-testid="movie-release-date">{useDateFormat(movieDetails?.release_date)}</h1>
+                        <h1 data-testid="movie-release-date">{movieDetails?.release_date}</h1>
                         <span className="hidden lg:block">•</span>
-                        <h1 data-testid="movie-runtime">{movieDetails?.runtime}mins</h1>
+                        <h1 data-testid="movie-runtime">{movieDetails?.runtime}</h1> <span>mins</span>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2 text-xs lg:text-sm">

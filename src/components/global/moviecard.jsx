@@ -27,17 +27,8 @@ export const MovieCard = (props) => {
 
             {/* Movie Poster */}
             <Link to={`/movies/${id}`}>
-                <div
-                    style={{
-                        backgroundColor: '#9CA3AF',
-                        backgroundImage: `${posterPath ? `url(https://image.tmdb.org/t/p/w342/${posterPath})` : null}`,
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                    }}
-                    className="w-[250px] h-[370px] hover:scale-[1.02] hover:rotate-[1deg] flex justify-center items-center transition ease-in-out duration-300 relative" data-testid="movie-poster"
-                >
-                    {!posterPath ? <p className="text-gray-900 text-5xl text-center">No Poster Available</p> : null}
+                <div className="flex justify-center items-center relative w-[250px] h-[370px] overflow-hidden bg-gray-400">
+                    {!posterPath ? <p className="text-gray-900 text-5xl text-center">No Poster Available</p> : <img data-testid="movie-poster" src={`${posterPath ? `https://image.tmdb.org/t/p/w342/${posterPath}` : null}`} className="w-[250px] h-[370px] hover:scale-[1.02] hover:rotate-[1deg]" />}
                 </div>
             </Link>
 
@@ -47,7 +38,7 @@ export const MovieCard = (props) => {
             </span>
 
             {/* Release Date */}
-            <p className="text-xs font-bold text-gray-400" data-testid="movie-release-date">{useDateFormat(date)}</p>
+            <p className="text-xs font-bold text-gray-400" data-testid="movie-release-date">{date}</p>
 
             {/* Title */}
             <Link to={`/movies/${id}`}>
